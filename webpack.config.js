@@ -23,8 +23,12 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader'],
-          publicPath: '/dist'
+          publicPath: '/'
         })
+      }, 
+      {
+        test: /\.(jpe?g|png|svg)$/,
+        loader: 'file-loader'
       }
     ]
   },

@@ -22,6 +22,7 @@ class Clock extends Component {
 
   getTimeUntil(deadline) {
     const time = Date.parse(deadline) - Date.parse(new Date());
+    if (time < 0) return;
     const seconds = Math.floor((time / 1000) % 60);
     const minutes = Math.floor((time / 1000 / 60) % 60);
     const hours = Math.floor(time / (1000 * 60 * 60) % 24);
@@ -42,10 +43,10 @@ class Clock extends Component {
   render() {
     return (
       <div className="clock">
-        <div className="days">{this.leadingZero(this.state.days)} days</div>
-        <div className="hours">{this.leadingZero(this.state.hours)} hours</div>
-        <div className="minutes">{this.leadingZero(this.state.minutes)} min</div>
-        <div className="seconds">{this.leadingZero(this.state.seconds)} sec</div>
+        <div className="days">{this.state.days} <span>DAYS</span></div>
+        <div className="hours">{this.leadingZero(this.state.hours)} <span>HOURS</span></div>
+        <div className="minutes">{this.leadingZero(this.state.minutes)} <span>MINUTES</span></div>
+        <div className="seconds">{this.leadingZero(this.state.seconds)} <span>SECONDS</span></div>
       </div>
     );
   }
